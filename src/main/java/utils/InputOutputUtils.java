@@ -4,13 +4,13 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.util.Arrays;
 import java.util.Scanner;
 
 public class InputOutputUtils {
-    public static void writeToFile(int[] data, String path) throws IOException {
+
+    public static <T> void writeToFile(T data, String path) throws IOException {
         FileWriter fileWriter = new FileWriter(path);
-        fileWriter.write("The result is: " + Arrays.toString(data));
+        fileWriter.write("The result is: " + data);
         fileWriter.close();
     }
 
@@ -30,5 +30,11 @@ public class InputOutputUtils {
         firstScanner.close();
         secondScanner.close();
         return array;
+    }
+
+    public static int readOnlyOneIntFromFile(String path) throws FileNotFoundException {
+        File file = new File(path);
+        Scanner scanner = new Scanner(file);
+        return scanner.nextInt();
     }
 }
