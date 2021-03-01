@@ -14,7 +14,7 @@ public class SegregationOf0sAnd1s {
         InputOutputUtils.writeToFile(Arrays.toString(segregate(arr)), OUTPUT_FILE);
     }
 
-    private static int[] segregate0sFrom1s(int[] arr) {
+    public static int[] segregate0sFrom1s(int[] arr) {
         int count = 0;
         int[] array = new int[arr.length];
         for (int i = 0; i < arr.length; i++) {
