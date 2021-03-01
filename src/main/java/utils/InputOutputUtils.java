@@ -1,6 +1,11 @@
 package utils;
 
+import ninthtask.SegregationOf0sAnd1s;
+
 import java.io.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import java.util.Scanner;
 
 public class InputOutputUtils {
@@ -35,6 +40,31 @@ public class InputOutputUtils {
         return scanner.nextInt();
     }
 
+    public static void writeTwoDimensionalArrayToFile(int[][] array, String path, String message) throws IOException {
+        StringBuilder builder = new StringBuilder();
+        for (int i = 0; i < array.length; i++) {
+            for (int j = 0; j < array[i].length; j++) {
+                builder.append(array[i][j]);
+                if (j < array[i].length - 1)
+                    builder.append(" ");
+            }
+            builder.append("\n");
+        }
+        BufferedWriter writer = new BufferedWriter(new FileWriter(path));
+        writer.write(message + builder.toString());
+        writer.close();
+    }
+
+    public static void writeListToFile(List<int[]> list, String path) throws IOException {
+        BufferedWriter bw = new BufferedWriter(new FileWriter(path));
+        bw.write("Result: \n");
+        for (int[] arr : list) {
+            bw.write(Arrays.toString(arr));
+            bw.newLine();
+        }
+        bw.close();
+    }
+
     public static int[][] readTwoDimensionalArrayFromFile(String path) throws FileNotFoundException {
         int[][] array;
         File file = new File(path);
@@ -54,18 +84,25 @@ public class InputOutputUtils {
         return array;
     }
 
-    public static void writeTwoDimensionalArrayToFile(int[][] array, String path, String message) throws IOException {
-        StringBuilder builder = new StringBuilder();
-        for (int i = 0; i < array.length; i++) {
-            for (int j = 0; j < array[0].length; j++) {
-                builder.append(array[i][j]);
-                if (j < array.length - 1)
-                    builder.append(" ");
-            }
-            builder.append("\n");
+    public static int[][] readTwoDimensionalJaggedArrayFromFile(String path) throws FileNotFoundException {
+        File file = new File(path);
+        Scanner scanner = new Scanner(file);
+        int countLines = 0;
+        List<String[]> list = new ArrayList<>();
+        while (scanner.hasNextLine()) {
+            String[] currentLine = scanner.nextLine().trim().split("\\s+");
+            countLines++;
+            list.add(currentLine);
         }
-        BufferedWriter writer = new BufferedWriter(new FileWriter(path));
-        writer.write(message + builder.toString());
-        writer.close();
+        scanner.close();
+        int[][] arr = new int[countLines][];
+        for (int i = 0; i < list.size(); i++) {
+            int size = list.get(i).length;
+            arr[i] = new int[size];
+            for (int j = 0; j < size; j++) {
+                arr[i][j] = Integer.parseInt(list.get(i)[j]);
+            }
+        }
+        return arr;
     }
 }
