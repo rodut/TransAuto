@@ -1,7 +1,5 @@
 package utils;
 
-import ninthtask.SegregationOf0sAnd1s;
-
 import java.io.*;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -13,6 +11,12 @@ public class InputOutputUtils {
     public static <T> void writeToFile(T data, String path) throws IOException {
         FileWriter fileWriter = new FileWriter(path);
         fileWriter.write("The result is: " + data);
+        fileWriter.close();
+    }
+
+    public static <T> void writeToFileAndAppend(T data, String path, String message) throws IOException {
+        FileWriter fileWriter = new FileWriter(path, true);
+        fileWriter.write(message + data + "\n");
         fileWriter.close();
     }
 
