@@ -1,6 +1,8 @@
 package utils;
 
 import java.io.*;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -38,6 +40,20 @@ public class InputOutputUtils {
         return array;
     }
 
+    public static List<int[]> readTwoArraysFromFile(String path) throws IOException {
+        List<String> result = Files.readAllLines(Paths.get(path));
+        List<int[]> intList = new ArrayList<>();
+        for (String s : result) {
+            String[] strings = s.trim().split("\\s+");
+            int[] nums = new int[strings.length];
+            for (int j = 0; j < strings.length; j++) {
+                nums[j] = Integer.parseInt(strings[j]);
+            }
+            intList.add(nums);
+        }
+        return intList;
+    }
+
     public static int readOnlyOneIntFromFile(String path) throws FileNotFoundException {
         File file = new File(path);
         Scanner scanner = new Scanner(file);
@@ -69,25 +85,6 @@ public class InputOutputUtils {
         bw.close();
     }
 
-    public static int[][] readTwoDimensionalArrayFromFile(String path) throws FileNotFoundException {
-        int[][] array;
-        File file = new File(path);
-        Scanner scanner = new Scanner(file);
-        int arraySize = scanner.nextLine().trim().split("\\s+").length;
-        scanner.close();
-        array = new int[arraySize][arraySize];
-        scanner = new Scanner(file);
-        int lineCount = 0;
-        while (scanner.hasNextLine()) {
-            String[] currentLine = scanner.nextLine().trim().split("\\s+");
-            for (int i = 0; i < currentLine.length; i++) {
-                array[lineCount][i] = Integer.parseInt(currentLine[i]);
-            }
-            lineCount++;
-        }
-        return array;
-    }
-
     public static int[][] readTwoDimensionalJaggedArrayFromFile(String path) throws FileNotFoundException {
         File file = new File(path);
         Scanner scanner = new Scanner(file);
@@ -108,5 +105,62 @@ public class InputOutputUtils {
             }
         }
         return arr;
+    }
+
+    public static int[][] readTwoDimensionalArrayFromFile(String path) throws FileNotFoundException {
+        int[][] array;
+        File file = new File(path);
+        Scanner scanner = new Scanner(file);
+        int size = scanner.nextLine().trim().split("\\s+").length;
+        scanner.close();
+        array = new int[size][size];
+        scanner = new Scanner(file);
+        int lineCount = 0;
+        while (scanner.hasNextLine()) {
+            String[] currentLine = scanner.nextLine().trim().split("\\s+");
+            for (int i = 0; i < currentLine.length; i++) {
+                array[lineCount][i] = Integer.parseInt(currentLine[i]);
+            }
+            lineCount++;
+        }
+        scanner.close();
+        return array;
+    }
+
+    public static List<int[][]> readTwoMatricesFromFile(String path) throws FileNotFoundException {
+        List<int[][]> matrices = new ArrayList<>();
+        Scanner scanner = new Scanner(new File(path));
+        int size = scanner.nextLine().trim().split("\\s+").length;
+        scanner.close();
+        int[][] firstArr = new int[size][size];
+        int[][] secondArr = new int[size][size];
+        scanner = new Scanner(new File(path));
+        int linesFirstArr = 0;
+        int linesSecondArr = 0;
+        boolean initialArr = true;
+        while (scanner.hasNextLine()) {
+            String line = scanner.nextLine();
+            if (line.contains("===")) {
+                initialArr = false;
+                continue;
+            }
+            if(initialArr){
+                String[] firstArrLine = line.trim().split("\\s+");
+                for (int i = 0; i < firstArrLine.length; i++) {
+                    firstArr[linesFirstArr][i] = Integer.parseInt(firstArrLine[i]);
+                }
+                linesFirstArr++;
+            }else{
+                String[] secondArrLine = line.trim().split("\\s+");
+                for (int i = 0; i < secondArrLine.length; i++) {
+                    secondArr[linesSecondArr][i] = Integer.parseInt(secondArrLine[i]);
+                }
+                linesSecondArr++;
+            }
+        }
+        matrices.add(firstArr);
+        matrices.add(secondArr);
+        scanner.close();
+        return matrices;
     }
 }
