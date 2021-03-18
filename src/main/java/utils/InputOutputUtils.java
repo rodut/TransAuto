@@ -3,16 +3,13 @@ package utils;
 import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 
 public class InputOutputUtils {
 
     public static <T> void writeToFile(T data, String path) throws IOException {
         FileWriter fileWriter = new FileWriter(path);
-        fileWriter.write("The result is: " + data);
+        fileWriter.write("The result is: " + data + "\n");
         fileWriter.close();
     }
 
@@ -52,6 +49,26 @@ public class InputOutputUtils {
             intList.add(nums);
         }
         return intList;
+    }
+
+    public static LinkedList<String> readLinkedListFromFileToString(String path) throws IOException {
+        List<String> list = Files.readAllLines(Paths.get(path));
+        LinkedList<String> linkedList = new LinkedList<>();
+        for (String s : list) {
+            String[] strings = s.trim().split("\\s+");
+            linkedList.addAll(Arrays.asList(strings));
+        }
+        return linkedList;
+    }
+
+    public static ArrayList<String> readArrayListFromFileToString(String path) throws IOException {
+        List<String> list = Files.readAllLines(Paths.get(path));
+        ArrayList<String> arrayList = new ArrayList<>();
+        for (String s : list) {
+            String[] strings = s.trim().split("\\s+");
+            arrayList.addAll(Arrays.asList(strings));
+        }
+        return arrayList;
     }
 
     public static int readOnlyOneIntFromFile(String path) throws FileNotFoundException {
@@ -144,13 +161,13 @@ public class InputOutputUtils {
                 initialArr = false;
                 continue;
             }
-            if(initialArr){
+            if (initialArr) {
                 String[] firstArrLine = line.trim().split("\\s+");
                 for (int i = 0; i < firstArrLine.length; i++) {
                     firstArr[linesFirstArr][i] = Integer.parseInt(firstArrLine[i]);
                 }
                 linesFirstArr++;
-            }else{
+            } else {
                 String[] secondArrLine = line.trim().split("\\s+");
                 for (int i = 0; i < secondArrLine.length; i++) {
                     secondArr[linesSecondArr][i] = Integer.parseInt(secondArrLine[i]);
