@@ -1,0 +1,4 @@
+The result is: [A, B, B, C, C]
+Print element from the specific position (index = 2): B
+Insert 'X' in the 10th position: [A, B, B, C, C, temp, temp, temp, temp, temp, X]
+Empty the list: []
