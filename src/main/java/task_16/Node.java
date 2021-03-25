@@ -1,13 +1,13 @@
 package task_16;
 
-public class Node {
+class Node {
     int data;
     Node next;
 
-    public Node() {
+    Node() {
     }
 
-    public Node(int data) {
+    Node(int data) {
         this.data = data;
     }
 }
