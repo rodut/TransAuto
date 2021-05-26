@@ -1,8 +1,8 @@
 package task_21;
 
 public class HillPatterns {
-    private static final String space = " ";
-    private static final String hash = "#";
+    private static final String SPACE = " ";
+    private static final String HASH = "#";
 
     public static void main(String[] args) {
         int value = 10;
@@ -22,9 +22,9 @@ public class HillPatterns {
         for (int row = 0; row < rows; row++) {
             for (int col = 0; col < cols; col++) {
                 if (col >= temp - row && col <= temp + row) {
-                    arr[row][col] = hash;
+                    arr[row][col] = HASH;
                 } else {
-                    arr[row][col] = space;
+                    arr[row][col] = SPACE;
                 }
             }
         }
@@ -39,9 +39,9 @@ public class HillPatterns {
             int count = temp - row;
             for (int col = 0; col < cols; col++) {
                 if (col >= temp - count && col <= temp + count) {
-                    arr[row][col] = hash;
+                    arr[row][col] = HASH;
                 } else {
-                    arr[row][col] = space;
+                    arr[row][col] = SPACE;
                 }
             }
         }
@@ -76,21 +76,21 @@ public class HillPatterns {
         for (int i = 0; i < size; i++) {
             if (i < val - 1) {
                 for (int j = 0; j < size; j++) {
-                    if (arr[i][j].equals(hash)) {
-                        tempArr[i + 1][j] = (space);
-                    } else if (arr[i][j].equals(space)) {
-                        tempArr[i + 1][j] = hash;
+                    if (arr[i][j].equals(HASH)) {
+                        tempArr[i + 1][j] = (SPACE);
+                    } else if (arr[i][j].equals(SPACE)) {
+                        tempArr[i + 1][j] = HASH;
                     }
-                    tempArr[0][j] = hash;
+                    tempArr[0][j] = HASH;
                 }
             } else if (i >= val) {
                 for (int j = 0; j < size; j++) {
-                    if (arr[i][j].equals(hash)) {
-                        tempArr[i - 1][j] = space;
-                    } else if (arr[i][j].equals(space)) {
-                        tempArr[i - 1][j] = hash;
+                    if (arr[i][j].equals(HASH)) {
+                        tempArr[i - 1][j] = SPACE;
+                    } else if (arr[i][j].equals(SPACE)) {
+                        tempArr[i - 1][j] = HASH;
                     }
-                    tempArr[size - 1][j] = hash;
+                    tempArr[size - 1][j] = HASH;
                 }
             }
         }
