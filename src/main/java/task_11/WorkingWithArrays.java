@@ -1,4 +1,4 @@
-package eleventhtask;
+package task_11;
 
 import utils.InputOutputUtils;
 
@@ -21,7 +21,7 @@ public class WorkingWithArrays {
 
     private static double calcAverageValOfElements(int[] arr) {
         int sum = 0;
-        double averageValue = 0;
+        double averageValue;
         for (int i : arr) {
             sum += i;
         }

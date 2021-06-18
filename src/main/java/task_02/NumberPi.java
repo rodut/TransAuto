@@ -1,4 +1,4 @@
-package secondtask;
+package task_02;
 
 import utils.*;
 import java.io.IOException;

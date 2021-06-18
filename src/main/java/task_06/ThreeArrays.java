@@ -1,4 +1,4 @@
-package sixthtask;
+package task_06;
 
 import utils.*;
 

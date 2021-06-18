@@ -1,4 +1,4 @@
-package fifthtask;
+package task_05;
 
 import utils.InputOutputUtils;
 

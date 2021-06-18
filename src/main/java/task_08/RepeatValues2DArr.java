@@ -1,4 +1,4 @@
-package eighthtask;
+package task_08;
 
 import utils.InputOutputUtils;
 

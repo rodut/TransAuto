@@ -1,4 +1,4 @@
-package ninthtask;
+package task_09;
 
 import utils.InputOutputUtils;
 

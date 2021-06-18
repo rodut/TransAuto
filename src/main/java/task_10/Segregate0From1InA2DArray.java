@@ -1,6 +1,6 @@
-package tenthtask;
+package task_10;
 
-import ninthtask.SegregationOf0sAnd1s;
+import task_09.SegregationOf0sAnd1s;
 import utils.InputOutputUtils;
 
 import java.io.*;

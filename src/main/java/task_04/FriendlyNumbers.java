@@ -1,4 +1,4 @@
-package fourth_task;
+package task_04;
 
 import utils.InputOutputUtils;
 

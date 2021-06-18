@@ -1,4 +1,4 @@
-package firsttask;
+package task_01;
 
 import utils.InputOutputUtils;
 import java.io.*;

@@ -1,4 +1,4 @@
-package firsttask;
+package task_01;
 
 public class BubbleSort {
     public static int[] usingBubbleSort(int[] arr) {

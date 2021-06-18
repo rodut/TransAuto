@@ -1,4 +1,4 @@
-package seventhtask;
+package task_07;
 
 import utils.InputOutputUtils;
 

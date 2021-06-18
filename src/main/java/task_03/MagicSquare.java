@@ -1,4 +1,4 @@
-package thirdtask;
+package task_03;
 
 import utils.*;
 
@@ -16,8 +16,8 @@ public class MagicSquare {
     }
 
     public static void checkIfMagicSquare(int[][] array) throws IOException {
-        List<Integer> rowList = new ArrayList<Integer>();
-        List<Integer> columnList = new ArrayList<Integer>();
+        List<Integer> rowList = new ArrayList<>();
+        List<Integer> columnList = new ArrayList<>();
         int size = array.length;
         int sumOfFirstDiagonal = 0;
         int sumOfSecondDiagonal = 0;

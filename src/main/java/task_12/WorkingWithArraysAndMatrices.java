@@ -1,4 +1,4 @@
-package twelfthtask;
+package task_12;
 
 import utils.InputOutputUtils;
 
